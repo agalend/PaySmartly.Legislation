@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "PaySmartly.Legislation";
+
+package legislation;
+
+// The greeting service definition.
+service Legislation {
+  // Sends a greeting
+  rpc GetTable (Request) returns (Response);
+}
+
+// The request message containing the user's name.
+message Request {
+  string name = 1;
+}
+
+// The response message containing the greetings.
+message Response {
+  string message = 1;
+}
