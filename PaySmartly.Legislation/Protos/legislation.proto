@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "PaySmartly.Legislation";
+
+package legislation;
+
+import "google/protobuf/timestamp.proto";
+
+service Legislation {
+  rpc GetTable (Request) returns (Response);
+}
+
+message Request {
+   google.protobuf.Timestamp payPeriod = 1;
+}
+
+message Response {
+  string exists = 1;
+  TaxableIncomeTable table = 2;
+}
+
+message TaxableIncomeTable {
+  repeated TaxableRange ranges = 1;
+}
+
+message TaxableRange {
+  double start = 1;
+  double end = 2;
+  double tax = 3;
+}
