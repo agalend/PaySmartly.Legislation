@@ -24,6 +24,8 @@ public class LegislationService : Legislation.LegislationBase
 
     public override Task<Response> GetTable(Request request, ServerCallContext context)
     {
+        // TODO: we can use immutable db or blockchain to store any legislation data since
+        // we should be not able to mutate this data
         return Task.FromResult(new Response
         {
             Table = taxableIncomeTable
