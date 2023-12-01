@@ -24,11 +24,20 @@ public class LegislationService : Legislation.LegislationBase
 
     public override Task<Response> GetTable(Request request, ServerCallContext context)
     {
-        // TODO: we can use immutable db or blockchain to store any legislation data since
-        // we should be not able to mutate this data
-        return Task.FromResult(new Response
+        if (request.PayPeriodFrom is null || request.PayPeriodTo is null)
         {
-            Table = taxableIncomeTable
-        });
+            Response response = new() { Exists = false, InvalidParameters = true };
+
+            return Task.FromResult(response);
+        }
+        else
+        {
+            // TODO: we can use immutable db or blockchain to store any legislation data since
+            // we should be not able to mutate this data
+
+            Response response = new() { Exists = true, InvalidParameters = false, Table = taxableIncomeTable };
+
+            return Task.FromResult(response);
+        }
     }
 }

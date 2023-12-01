@@ -11,12 +11,14 @@ service Legislation {
 }
 
 message Request {
-   google.protobuf.Timestamp payPeriod = 1;
+   google.protobuf.Timestamp payPeriodFrom = 1;
+   google.protobuf.Timestamp payPeriodTo = 2;
 }
 
 message Response {
-  string exists = 1;
-  TaxableIncomeTable table = 2;
+  bool exists = 1;
+  bool invalidParameters = 2;
+  TaxableIncomeTable table = 3;
 }
 
 message TaxableIncomeTable {
