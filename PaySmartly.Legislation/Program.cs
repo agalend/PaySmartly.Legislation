@@ -3,10 +3,8 @@ using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
-
 using PaySmartly.Legislation.Services;
 
-// TODO: set service name somewhere!!!
 string ServiceName = "Legislation Service";
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,9 +14,7 @@ builder.Services.AddGrpc();
 AddOpenTelemetryService(builder);
 
 var app = builder.Build();
-
 app.MapGrpcService<LegislationService>();
-
 app.Run();
 
 void AddOpenTelemetryLogging(WebApplicationBuilder builder)
