@@ -37,6 +37,7 @@ void AddOpenTelemetryService(WebApplicationBuilder builder)
     {
         tracing.AddAspNetCoreInstrumentation().AddConsoleExporter();
     });
+    
     openTelemetryBuilder = openTelemetryBuilder.WithMetrics(metrics =>
     {
         metrics.AddAspNetCoreInstrumentation().AddConsoleExporter();
