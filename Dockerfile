@@ -17,11 +17,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0
 
 LABEL author="Stefan Bozov"
 
-ENV ASPNETCORE_URLS=http://*:9090
-ENV ASPNETCORE_ENVIRONMENT="production"
-
-EXPOSE 9090
-
 WORKDIR /PaySmartly.Legislation
 COPY --from=build /PaySmartly.Legislation ./
 ENTRYPOINT ["dotnet", "PaySmartly.Legislation.dll"]
